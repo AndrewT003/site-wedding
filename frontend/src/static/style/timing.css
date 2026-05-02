@@ -1,0 +1,156 @@
+.timing {
+    padding: 80px 0;
+    margin: 40px 0;
+}
+
+.timeline {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+
+/* вертикальна лінія */
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: linear-gradient(180deg, #D4C5B9 0%, #C4B5A9 50%, #D4C5B9 100%);
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    border-radius: 2px;
+    transition: transform 1.5s ease-out;
+}
+
+.timeline.visible .timeline-line {
+    transform: translateX(-50%) scaleY(1);
+}
+
+/* елемент таймлайну */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin: 80px 0;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.timeline.visible .timeline-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline.visible .timeline-item:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.timeline.visible .timeline-item:nth-child(3) {
+    transition-delay: 0.6s;
+}
+
+.timeline.visible .timeline-item:nth-child(4) {
+    transition-delay: 0.9s;
+}
+
+/* фото з золотим обідком */
+.timeline-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, #F9F1E7 0%, #F4EBE1 100%);
+    box-shadow: 0 10px 30px rgba(229, 211, 195, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.timeline-image:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(229, 211, 195, 0.4);
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.timeline-image:hover img {
+    transform: scale(1.05);
+}
+
+/* точка на лінії */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #C4B5A9 0%, #B5A599 100%);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 12px rgba(196, 181, 169, 0.3);
+    animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(196, 181, 169, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(196, 181, 169, 0.6), 0 0 0 8px rgba(196, 181, 169, 0.1);
+    }
+}
+
+/* текст справа */
+.timeline-content {
+    margin-left: auto;
+    width: 180px;
+}
+
+.time {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.label {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Адаптивність для мобільних */
+@media (max-width: 768px) {
+    .timing {
+        padding: 40px 10px;
+    }
+
+    .timeline {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .timeline-item {
+        margin: 40px 0;
+    }
+
+    .timeline-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .timeline-content {
+        width: 100px;
+    }
+
+    .time {
+        font-size: 18px;
+    }
+
+    .label {
+        font-size: 16px;
+    }
+}

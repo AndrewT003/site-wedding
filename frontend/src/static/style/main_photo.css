@@ -1,0 +1,222 @@
+/* Головний контейнер mainphoto */
+.mainphoto-wrapper {
+    background: linear-gradient(135deg, #FFF8F0 0%, #F9F1E7 100%);
+    padding: 40px 30px;
+    margin-bottom: 40px;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.mainphoto-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mainphoto-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shimmer 8s infinite linear;
+}
+
+/* Десктоп стилі */
+@media (min-width: 1000px) {
+    #horizontal_line{
+        margin-left: 3%;
+        width: 220px;
+        border-bottom: #2B395C solid 3px;
+    }
+    #vertical_line{
+        padding-left: 20px;
+        padding-top: 20px;
+        margin-left: 15%;
+        border-left: #2B395C solid 3px;
+    }
+    #left_block{
+        margin-right: 50px;
+    }
+    #right_block{
+        justify-content: space-between;
+        margin-top: 30px;
+        margin-right: 50px;
+    }
+    #right_block img {
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: scale(0.9);
+        transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.8s ease 0.3s;
+    }
+
+    .mainphoto-wrapper.visible #right_block img {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    #right_block img:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    }
+
+    #ring_photo{
+        margin-bottom: 270px;
+    }
+
+    /* Приховуємо мобільні фото на десктопі */
+    .mobile_photos {
+        display: none;
+    }
+}
+
+/* Мобільні стилі */
+@media (max-width: 999px) {
+    /* Головний контейнер - одна колонка */
+    .d-flex.flex-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    #horizontal_line {
+        margin-left: 20px;
+        width: 200px;
+        border-bottom: #2B395C solid 2px;
+    }
+
+    .mainphoto-wrapper {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    #left_block {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #vertical_line {
+        padding-left: 20px;
+        padding-top: 20px;
+        margin-left: 60px;
+        border-left: #2B395C solid 2px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mobile_main_photo {
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: scale(0.9);
+        transition: transform 0.3s ease, opacity 0.8s ease 0.3s;
+    }
+
+    .mainphoto-wrapper.visible .mobile_main_photo {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .mobile_main_photo:active {
+        transform: scale(1.05);
+    }
+
+    #ring_photo {
+        width: 60px !important;
+        height: 60px !important;
+        margin-bottom: 20px;
+    }
+
+    /* Приховуємо right_block на мобільних */
+    #right_block {
+        display: none !important;
+    }
+
+    /* Показуємо мобільні фото */
+    .mobile_photos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 20px;
+    }
+
+    .mobile_main_photo {
+        width: 200px;
+        height: 270px;
+        object-fit: cover;
+    }
+
+    .mobile_heart_photo {
+        width: 100px;
+        height: 100px;
+        margin-top: 15px;
+    }
+
+    .our_names_mainphoto {
+        font-size: 28px !important;
+    }
+
+    #main_wedding_date {
+        font-size: 32px !important;
+    }
+}
+
+/* Додаткові анімації */
+#main_wedding_date {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.mainphoto-wrapper.visible #main_wedding_date {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.our_names_mainphoto {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.mainphoto-wrapper.visible .our_names_mainphoto {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mainphoto-wrapper.visible .our_names_mainphoto:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.mainphoto-wrapper.visible .our_names_mainphoto:nth-child(4) {
+    transition-delay: 0.5s;
+}
+
+.mainphoto-wrapper.visible .our_names_mainphoto:nth-child(5) {
+    transition-delay: 0.6s;
+}
+
+/* Анімації для keyframes */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

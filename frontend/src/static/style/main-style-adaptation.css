@@ -1,0 +1,12 @@
+body {
+    background: linear-gradient(135deg, #FAF6F1 0%, #F5EFE7 100%);
+    min-height: 100vh;
+}
+
+@media (min-width: 1000px) {
+    main{
+        padding-top: 30px;
+        padding-left: 30%;
+        padding-right: 30%;
+    }
+}

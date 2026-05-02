@@ -1,0 +1,101 @@
+/* Parallax секція з фіксованим фоном */
+.visitors_parallax_section {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Заблюрене фонове зображення */
+.visitors_parallax_section::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-image: url('../img/life_photo.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(3px);
+    z-index: 0;
+}
+
+/* Темний overlay для кращої читабельності тексту */
+.visitors_parallax_section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Контейнер для тексту */
+.visitors_text{
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.visitors_text h1 {
+    color: white;
+    font-size: 48px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.visitors_parallax_section.visible .visitors_text h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.visitors_text h2 {
+    color: white;
+    font-size: 28px;
+    line-height: 1.6;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.visitors_parallax_section.visible .visitors_text h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Мобільна адаптація */
+@media(max-width:800px){
+    .visitors_parallax_section {
+        min-height: auto;
+        background-attachment: scroll; /* На мобільних fixed може працювати нестабільно */
+    }
+
+    .visitors_text {
+        padding: 60px 20px;
+    }
+
+    .visitors_text h1 {
+        font-size: 32px;
+    }
+
+    .visitors_text h2 {
+        font-size: 20px;
+    }
+}

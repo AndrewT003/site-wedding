@@ -1,0 +1,192 @@
+/* Секція з фоновим зображенням */
+.waiting_for_you_section {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    overflow: hidden;
+}
+
+/* Фонове зображення */
+.waiting_for_you_section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../img/calendar_back_photo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* Темний overlay для кращої читабельності */
+.waiting_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* Контент поверх фону */
+.waiting_content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+
+/* Контейнер календаря */
+.calendar_container {
+    padding: 30px;
+    margin-top: 60px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.calendar_month {
+    font-family: "Poiret One", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.5px currentColor;
+}
+
+/* Дні тижня */
+.calendar_weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.calendar_weekday {
+    font-family: "Poiret One", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    text-align: center;
+}
+
+/* Дні місяця */
+.calendar_days {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.calendar_week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar_day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-family: "Poiret One", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.calendar_day.empty {
+    visibility: hidden;
+}
+
+.calendar_day:not(.empty):not(.wedding_day) {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.calendar_day:not(.empty):not(.wedding_day):hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* День весілля - виділений */
+.calendar_day.wedding_day {
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.day_number {
+    position: relative;
+    z-index: 1;
+}
+
+/* Текст дати */
+.waiting_date_text {
+    font-family: "Poiret One", sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    margin-top: 30px;
+    -webkit-text-stroke: 0.5px currentColor;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s;
+}
+
+/* Мобільна адаптація */
+@media(max-width:800px){
+    .waiting_for_you_section {
+        min-height: auto;
+        padding: 60px 20px;
+    }
+
+    .calendar_container {
+        padding: 20px;
+    }
+
+    .calendar_month {
+        font-size: 26px;
+    }
+
+    .calendar_weekday {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .calendar_day {
+        font-size: 16px;
+    }
+
+    .wedding_hearts {
+        font-size: 20px;
+        top: -6px;
+        right: -6px;
+    }
+
+    .waiting_date_text {
+        font-size: 22px;
+        margin-top: 25px;
+    }
+}

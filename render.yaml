@@ -1,0 +1,36 @@
+services:
+  # Backend Service (Node.js Express)
+  - type: web
+    name: wedding-backend-nodejs
+    runtime: docker
+    repo: https://github.com/YOUR_USERNAME/site-weding-nodejs
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: GOOGLE_SHEETS_SPREADSHEET_ID
+        sync: false
+      - key: GOOGLE_SHEETS_SHEET_NAME
+        value: Sheet1
+      - key: GOOGLE_SHEETS_CREDENTIALS_PATH
+        value: /app/credentials/credentials.json
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+    healthCheckPath: /actuator/health
+
+  # Frontend Service (React + Nginx)
+  - type: web
+    name: wedding-frontend-nodejs
+    runtime: docker
+    repo: https://github.com/YOUR_USERNAME/site-weding-nodejs
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: wedding-backend-nodejs
+          property: host

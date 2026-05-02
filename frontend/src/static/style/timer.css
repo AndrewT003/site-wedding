@@ -1,0 +1,110 @@
+.fly-text {
+    display: inline-block;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    /* Початкова позиція - справа і прозорий */
+    transform: rotate(20deg) translateX(100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    -webkit-text-stroke: 0.5px currentColor;
+    margin-top: 0;
+}
+
+/* Клас, який додається при доскролюванні */
+.fly-text.visible {
+    transform: rotate(20deg) translateX(0);
+    opacity: 1;
+}
+
+.time_left {
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 0.5px currentColor;
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s;
+}
+
+.timer-wrapper.visible .time_left {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.Waiting_lable {
+    margin-top: 0;
+    padding-top: 50px;
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 36px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 0.5px currentColor;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.timer-wrapper.visible .Waiting_lable {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timer-wrapper.visible .waiting_for_you_section {
+    opacity: 1;
+}
+
+.timer-wrapper.visible .calendar_container {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.timer-wrapper.visible .waiting_date_text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Обгортка для всього блоку Timer + Calendar */
+.timer-wrapper {
+    margin: 0;
+    position: relative;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Мобільна адаптація */
+@media (max-width: 768px) {
+    .Waiting_lable {
+        font-size: 28px;
+        padding-top: 40px;
+    }
+
+    .fly-text {
+        font-size: 20px;
+    }
+}
+
