@@ -36,7 +36,7 @@ function Quastions() {
         e.preventDefault();
 
         // Використовуємо змінну оточення для API URL
-        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+        const API_URL = process.env.REACT_APP_API_URL || '';
 
         try {
             const response = await fetch(`${API_URL}/api/submit-questions`, {
