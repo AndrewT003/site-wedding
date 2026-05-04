@@ -83,8 +83,15 @@
 /* Мобільна адаптація */
 @media(max-width:800px){
     .visitors_parallax_section {
-        min-height: auto;
-        background-attachment: scroll; /* На мобільних fixed може працювати нестабільно */
+        min-height: 70vh;
+    }
+
+    /* Вимикаємо fixed на мобільних */
+    .visitors_parallax_section::after {
+        background-attachment: scroll;
+        background-position: center center;
+        background-size: cover;
+        filter: blur(2px);
     }
 
     .visitors_text {
@@ -97,5 +104,6 @@
 
     .visitors_text h2 {
         font-size: 20px;
+        line-height: 1.5;
     }
 }

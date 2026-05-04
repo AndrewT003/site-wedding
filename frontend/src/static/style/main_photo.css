@@ -143,14 +143,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 20px 0;
-        padding: 0;
+        padding-left: 20px;
     }
 
     .mobile_main_photo {
-        width: 250px;
-        height: 330px;
-        object-fit: contain;
+        width: 200px;
+        height: 270px;
+        object-fit: cover;
     }
 
     .mobile_heart_photo {
