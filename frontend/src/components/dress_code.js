@@ -26,7 +26,7 @@ function DressCode() {
             color: "#8D98AA",
             colorName: "white_gray",
             image: grayCostume,
-            title: "Сіро-білий"
+            title: "Сірий"
         },
         {
             id: 2,
