@@ -1,0 +1,69 @@
+# Apache конфігурація для VPS
+# Скопіюйте цей файл на VPS: /etc/apache2/sites-available/andriy-iryna.conf
+# Після копіювання виконайте:
+# sudo a2ensite andriy-iryna
+# sudo systemctl reload apache2
+
+<VirtualHost *:80>
+    ServerName andriy-iryna.co.ua
+    ServerAlias www.andriy-iryna.co.ua
+
+    DocumentRoot /var/www/andriy-iryna
+
+    # Логи
+    ErrorLog ${APACHE_LOG_DIR}/andriy-iryna-error.log
+    CustomLog ${APACHE_LOG_DIR}/andriy-iryna-access.log combined
+
+    # Backend API - проксування на Node.js сервер
+    ProxyPreserveHost On
+    ProxyPass /api/ http://localhost:5000/
+    ProxyPassReverse /api/ http://localhost:5000/
+
+    # Налаштування таймаутів для проксі
+    ProxyTimeout 60
+
+    # Додаткові заголовки для проксі
+    <Location /api/>
+        RequestHeader set X-Forwarded-Proto "http"
+        RequestHeader set X-Real-IP %{REMOTE_ADDR}s
+    </Location>
+
+    <Directory /var/www/andriy-iryna>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        # React Router - підтримка SPA
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+
+        # Кешування статичних файлів
+        <FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+            Header set Cache-Control "public, max-age=31536000, immutable"
+        </FilesMatch>
+
+        # Безпека
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-XSS-Protection "1; mode=block"
+    </Directory>
+
+    # Заборона доступу до прихованих файлів
+    <DirectoryMatch "^\.|\/\.">
+        Require all denied
+    </DirectoryMatch>
+
+    # Стиснення Gzip
+    <IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+        AddOutputFilterByType DEFLATE text/javascript application/javascript application/json
+        DeflateCompressionLevel 6
+    </IfModule>
+</VirtualHost>
+
+# HTTPS конфігурація буде додана автоматично через certbot
+# Після запуску: sudo certbot --apache -d andriy-iryna.co.ua -d www.andriy-iryna.co.ua
