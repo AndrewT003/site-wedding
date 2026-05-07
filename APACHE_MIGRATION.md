@@ -1,6 +1,22 @@
 # Міграція з Nginx на Apache
 
-## Кроки міграції на VPS
+## Для AlmaLinux/RHEL (CentOS)
+
+На AlmaLinux Apache називається **httpd**. Використовуйте файл `httpd.conf.almalinux` замість `apache.conf.example`.
+
+## Кроки міграції на VPS (AlmaLinux)
+
+### 1. Встановіть Apache (httpd) та необхідні модулі
+
+```bash
+sudo dnf install httpd mod_ssl mod_proxy_html
+
+# Модулі вже включені в httpd на RHEL/AlmaLinux
+# Перевірити доступні модулі:
+httpd -M
+```
+
+## Кроки міграції на VPS (Ubuntu/Debian)
 
 ### 1. Встановіть Apache та необхідні модулі
 
