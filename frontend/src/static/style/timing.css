@@ -122,6 +122,13 @@
     color: #333;
 }
 
+.address {
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
 /* Адаптивність для мобільних */
 @media (max-width: 768px) {
     .timing {
@@ -152,5 +159,10 @@
 
     .label {
         font-size: 16px;
+    }
+
+    .address {
+        font-size: 12px;
+        margin-top: 5px;
     }
 }

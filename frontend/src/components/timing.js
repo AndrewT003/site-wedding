@@ -24,6 +24,7 @@ function Timing(){
                     <div className="timeline-content">
                         <div className="time">12:00</div>
                         <div className="label">ЗАГС</div>
+                        <div className="address">проспект Академіка Глушкова, 1к8, Павильон 8</div>
                     </div>
                 </div>
 
@@ -37,6 +38,7 @@ function Timing(){
                     <div className="timeline-content">
                         <div className="time">13:30</div>
                         <div className="label">Вінчання</div>
+                        <div className="address">вулиця Самійла Кішки, 3-a</div>
                     </div>
                 </div>
 
@@ -50,6 +52,7 @@ function Timing(){
                     <div className="timeline-content">
                         <div className="time">15:30</div>
                         <div className="label">Ресторан</div>
+                        <div className="address">Музейний провулок, 4</div>
                     </div>
                 </div>
 

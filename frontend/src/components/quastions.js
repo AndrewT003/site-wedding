@@ -125,7 +125,7 @@ function Quastions() {
                         <div className="quastion_item">
                             <label className="quastion_label">Що будете пити?</label>
                             <div className="quastion_checkbox_group">
-                                {['Вино', 'Шампанське','Горілка', 'Коньяк','Віскі', 'Сік', 'Вода'].map(drink => (
+                                {['Вино', 'Шампанське','Горілка', 'Коньяк', 'Безалкогольні напої'].map(drink => (
                                     <label key={drink} className="checkbox_option">
                                         <input
                                             type="checkbox"
