@@ -52,7 +52,7 @@ function Timing(){
                     <div className="timeline-content">
                         <div className="time">15:30</div>
                         <div className="label">Ресторан</div>
-                        <div className="address">Музейний провулок, 4</div>
+                        <div className="address">вулиця Георгія Гонгадзе, 5</div>
                     </div>
                 </div>
 

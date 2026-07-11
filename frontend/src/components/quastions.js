@@ -81,7 +81,7 @@ function Quastions() {
     return (
         <>
             <div ref={elementRef} className={`quastions_section ${isVisible ? 'visible' : ''}`}>
-                <h1 className="quastions_title">Просимо відповісти на декілька запитань, які ми підготували до 15 червня:</h1>
+                <h1 className="quastions_title">Просимо відповісти на декілька запитань, які ми підготували до 15 липня:</h1>
                 <div className="quastions_container">
                     <form onSubmit={handleSubmit}>
                         <div className="quastion_item">
